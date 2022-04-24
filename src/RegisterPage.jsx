@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Container, Dialog, DialogTitle, TextField} from '@mui/material';
+import {Button, Container, Dialog, DialogContent, DialogTitle, TextField} from '@mui/material';
 import {register} from './apis/registerApi';
 
 const RegisterPage = () => {
@@ -16,6 +16,7 @@ const RegisterPage = () => {
 		<>
 			<Dialog open={showDialog} onClose={() => setShowDialog(false)}>
 				<DialogTitle>Success</DialogTitle>
+				<DialogContent>{`${username} has been successfully registered`}</DialogContent>
 			</Dialog>
 			<Container component="main" maxWidth="xs">
 				<TextField
