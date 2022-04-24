@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Button, Container, Dialog, DialogContent, TextField} from '@mui/material';
+import {Button, Container, TextField} from '@mui/material';
 import {register} from './apis/registerApi';
+import RegisterStatusDialog from './RegisterStatusDialog';
 
 const RegisterPage = () => {
 	const [showDialog, setShowDialog] = useState(false);
@@ -18,9 +19,7 @@ const RegisterPage = () => {
 
 	return (
 		<>
-			<Dialog open={showDialog} onClose={() => setShowDialog(false)}>
-				<DialogContent>{dialogMsg}</DialogContent>
-			</Dialog>
+			<RegisterStatusDialog showDialog={showDialog} onClose={() => setShowDialog(false)} dialogMsg={dialogMsg} />
 			<Container component="main" maxWidth="xs">
 				<TextField
 					margin="normal"
@@ -49,7 +48,7 @@ const RegisterPage = () => {
 					variant="contained"
 					onClick={handleSubmit}
 				>
-                        Register
+					Register
 				</Button>
 			</Container>
 		</>
