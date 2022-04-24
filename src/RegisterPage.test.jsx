@@ -33,6 +33,20 @@ describe('RegisterPage', () => {
 		expect(within(dialog).getByText(`${username} has been successfully registered`)).toBeInTheDocument();
 	});
 
+	test('should show failure message when submit and registration fails', () => {
+		const username = 'test-username';
+		registerApi.register.mockReturnValue(false);
+
+		render(<RegisterPage />);
+
+		userEvent.type(screen.getByRole('textbox', {name: 'Username'}), username);
+		userEvent.type(screen.getByRole('textbox', {name: 'Password'}), 'test-password');
+		userEvent.click(screen.getByRole('button', {name: 'Register'}));
+
+		const dialog = screen.getByRole('dialog', {});
+		expect(within(dialog).getByText(`Sorry, unable to register ${username}`)).toBeInTheDocument();
+	});
+
 	test('should call register with input username and password when submit', () => {
 		const username = 'some-username';
 		const password = 'some-password';

@@ -1,22 +1,25 @@
 import React, {useState} from 'react';
-import {Button, Container, Dialog, DialogContent, DialogTitle, TextField} from '@mui/material';
+import {Button, Container, Dialog, DialogContent, TextField} from '@mui/material';
 import {register} from './apis/registerApi';
 
 const RegisterPage = () => {
 	const [showDialog, setShowDialog] = useState(false);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [dialogMsg, setDialogMsg] = useState('');
 
 	const handleSubmit = () => {
-		register(username, password);
+		const registerResult = register(username, password);
+		const msg = registerResult ? `${username} has been successfully registered` : `Sorry, unable to register ${username}`;
+
+		setDialogMsg(msg);
 		setShowDialog(true);
 	};
 
 	return (
 		<>
 			<Dialog open={showDialog} onClose={() => setShowDialog(false)}>
-				<DialogTitle>Success</DialogTitle>
-				<DialogContent>{`${username} has been successfully registered`}</DialogContent>
+				<DialogContent>{dialogMsg}</DialogContent>
 			</Dialog>
 			<Container component="main" maxWidth="xs">
 				<TextField
