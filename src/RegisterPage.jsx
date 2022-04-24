@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {Button, Container, Dialog, DialogTitle, TextField} from '@mui/material';
+import {register} from './apis/registerApi';
 
 const RegisterPage = () => {
 	const [showDialog, setShowDialog] = useState(false);
-	const [, setUsername] = useState('');
-	const [, setPassword] = useState('');
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
 
 	const handleSubmit = () => {
+		register(username, password);
 		setShowDialog(true);
 	};
 

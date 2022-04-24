@@ -2,6 +2,9 @@ import React from 'react';
 import {render, screen, within} from '@testing-library/react';
 import RegisterPage from './RegisterPage';
 import userEvent from '@testing-library/user-event';
+import * as registerApi from './apis/registerApi';
+
+jest.mock('./apis/registerApi');
 
 describe('RegisterPage', () => {
 	test('should show input fields and submit button', () => {
@@ -23,5 +26,19 @@ describe('RegisterPage', () => {
 
 		const dialog = screen.getByRole('dialog', {});
 		expect(within(dialog).getByText('Success')).toBeInTheDocument();
+	});
+
+	test('should call register with input username and password when submit', () => {
+		const username = 'some-username';
+		const password = 'some-password';
+
+		render(<RegisterPage />);
+
+		userEvent.type(screen.getByRole('textbox', {name: 'Username'}), username);
+		userEvent.type(screen.getByRole('textbox', {name: 'Password'}), password);
+		userEvent.click(screen.getByRole('button', {name: 'Register'}));
+
+		expect(registerApi.register).toHaveBeenCalledTimes(1);
+		expect(registerApi.register).toHaveBeenCalledWith(username, password);
 	});
 });
