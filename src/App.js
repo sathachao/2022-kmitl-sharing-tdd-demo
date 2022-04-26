@@ -1,9 +1,9 @@
 import React from 'react';
-import RegisterPage from './RegisterPage';
+import WordCountPage from './WordCountPage';
 
 function App() {
 	return (
-		<RegisterPage/>
+		<WordCountPage />
 	);
 }
 

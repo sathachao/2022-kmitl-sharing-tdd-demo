@@ -21,6 +21,7 @@
     "ci": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**'",
+    "test:ci": "npm run lint && npm run ci",
     "prepare": "husky install"
   },
   "eslintConfig": {

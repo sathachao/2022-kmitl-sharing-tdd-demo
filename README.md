@@ -9,9 +9,8 @@ This repository contains code for practicing test-driven development.
 
 ### New features
 
-* When click on `Register` button, call register API (`registerApi.register`)
-* On successful registration, show success dialog with `{USERNAME} has been successfully registered` as success message.
-* On failed registration, show failure dialog with `Sorry, unable to register {USERNAME}`
+* Ignore empty string in input text
+* Make word count case-insensitive
 
 ## Useful Commands
 
