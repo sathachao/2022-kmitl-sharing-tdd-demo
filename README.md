@@ -9,8 +9,10 @@ This repository contains code for practicing test-driven development.
 
 ### New features
 
-* Ignore empty string in input text
 * Make word count case-insensitive
+* Support comma (`,`)
+* Support colon (`:`)
+* Ignore empty string in input text
 
 ## Useful Commands
 
